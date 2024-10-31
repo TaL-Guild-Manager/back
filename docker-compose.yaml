@@ -1,0 +1,61 @@
+name: tal_guild_manager
+
+services:
+  tal_guild_manager:
+    container_name: TalGuildManager
+    build:
+      context: .
+      dockerfile: docker/dev.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/usr/src
+      - static_volume:/home/src/app/web/staticfiles
+    depends_on:
+      - db
+    networks:
+      - backend
+    restart: always
+    tty: true
+    env_file:
+      - .env
+
+  db:
+    image: bitnami/postgresql:16.4.0
+    container_name: postgres_dev
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    networks:
+      - backend
+    restart: always
+
+  pg-admin:
+    container_name: pgadmin
+    image: elestio/pgadmin:REL-8_12
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
+      PGADMIN_LISTEN_PORT: "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+  static_volume:
+  pgadmindata:
+
+networks:
+  backend:
