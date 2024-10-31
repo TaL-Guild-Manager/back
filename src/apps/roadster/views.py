@@ -70,8 +70,8 @@ def activate(request, roadster_id) -> JsonResponse:
 @required_method('DELETE')
 @csrf_protect
 def delete(request, roadster_id) -> JsonResponse:
-    member = Roadster.objects.get(pk=roadster_id)
-    member.delete()
+    roadster = Roadster.objects.get(pk=roadster_id)
+    roadster.delete()
 
     return api_response(HttpCode.SUCCESS, 'success', 'Roadster successfully deleted.')
 

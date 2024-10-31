@@ -46,5 +46,7 @@ def show_serializer(member):
         'is_on_discord': member.is_on_discord,
         'is_active': member.is_active,
         'has_privilege': member.has_privilege,
+        'created_at': member.created_at.strftime('%Y-%m-%d') if member.created_at else "",
+        'updated_at': member.updated_at.strftime('%Y-%m-%d') if member.updated_at else "",
         'is_activate': member.is_activate,
     }
