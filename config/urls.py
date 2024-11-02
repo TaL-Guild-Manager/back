@@ -20,12 +20,12 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('boss/', include('src.apps.boss.urls'), name="boss_"),
+    path('bis/', include('src.apps.bis.urls'), name="bis_"),
     path('combat_type/', include('src.apps.combat_type.urls'), name="combat_type_"),
     path('grade/', include('src.apps.grade.urls'), name="grade_"),
     path('loot_type/', include('src.apps.loot_type.urls'), name="loot_type_"),
     path('member/', include('src.apps.member.urls'), name="member_"),
     path('roadster/', include('src.apps.roadster.urls'), name="roadster_"),
-    path('roadster_member/', include('src.apps.roadster_member.urls'), name="roadster_member_"),
     path('stuff/', include('src.apps.stuff.urls'), name="stuff_"),
     path('weapon/', include('src.apps.weapon.urls'), name="weapon_"),
 ]

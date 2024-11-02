@@ -3,6 +3,7 @@ from django.db import models
 class BiS(models.Model):
     is_primary = models.BooleanField(null=True, blank=True, default=True)
     member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
+    stuffs = models.ManyToManyField('stuff.Stuff', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     is_activate = models.BooleanField(default=True, null=True, blank=True)

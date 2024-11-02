@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'src.apps.bis',
-    'src.apps.bis_stuff',
     'src.apps.blacklist',
     'src.apps.boss',
     'src.apps.combat_type',
@@ -61,7 +60,6 @@ INSTALLED_APPS = [
     'src.apps.member',
     'src.apps.member_distribution',
     'src.apps.roadster',
-    'src.apps.roadster_member',
     'src.apps.stuff',
     'src.apps.weapon',
 ]
