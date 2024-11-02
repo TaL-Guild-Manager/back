@@ -4,6 +4,7 @@ from django.db import models
 class Roadster(models.Model):
     label = models.CharField(max_length=255, null=False)
     is_pvp = models.BooleanField(null=True, blank=True, default=True)
+    members = models.ManyToManyField('member.Member', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     is_activate = models.BooleanField(default=True, null=True, blank=True)
