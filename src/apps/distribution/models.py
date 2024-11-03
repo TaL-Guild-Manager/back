@@ -2,6 +2,7 @@ from django.db import models
 
 class Distribution(models.Model):
     loot = models.ForeignKey('loot.Loot', on_delete=models.CASCADE)
+    members = models.ManyToManyField('member.Member', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     is_activate = models.BooleanField(default=True, null=True, blank=True)
