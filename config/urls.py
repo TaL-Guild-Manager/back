@@ -24,6 +24,7 @@ urlpatterns = [
     path('boss/', include('src.apps.boss.urls'), name="boss_"),
     path('combat_type/', include('src.apps.combat_type.urls'), name="combat_type_"),
     path('grade/', include('src.apps.grade.urls'), name="grade_"),
+    path('loot/', include('src.apps.loot.urls'), name="loot_"),
     path('loot_type/', include('src.apps.loot_type.urls'), name="loot_type_"),
     path('member/', include('src.apps.member.urls'), name="member_"),
     path('roadster/', include('src.apps.roadster.urls'), name="roadster_"),
