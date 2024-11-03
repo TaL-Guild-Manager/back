@@ -23,6 +23,7 @@ urlpatterns = [
     path('blacklist/', include('src.apps.blacklist.urls'), name="blacklist_"),
     path('boss/', include('src.apps.boss.urls'), name="boss_"),
     path('combat_type/', include('src.apps.combat_type.urls'), name="combat_type_"),
+    path('contribution/', include('src.apps.contribution.urls'), name="contribution_"),
     path('grade/', include('src.apps.grade.urls'), name="grade_"),
     path('loot/', include('src.apps.loot.urls'), name="loot_"),
     path('loot_type/', include('src.apps.loot_type.urls'), name="loot_type_"),
