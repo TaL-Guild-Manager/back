@@ -1,6 +1,6 @@
 
 from django.core.exceptions import ObjectDoesNotExist, ValidationError, BadRequest
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 from src.services.api_response import send_json_response as api_response
 
 http_codes = Constants.HttpResponseCodes

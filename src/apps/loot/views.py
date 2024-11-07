@@ -6,7 +6,7 @@ from django.core.exceptions import FieldError, BadRequest
 
 from src.services.api_response import send_json_response as api_response
 from src.decorators.request_method_validator import required_method
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 
 from .models import Loot
 from .forms import LootForm

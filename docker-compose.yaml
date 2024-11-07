@@ -1,8 +1,8 @@
-name: tal_guild_manager
+name: tal-guild-manager
 
 services:
-  tal_guild_manager:
-    container_name: TalGuildManager
+  kgm:
+    # container_name: TalGuildManager
     build:
       context: .
       dockerfile: docker/dev.Dockerfile
@@ -15,6 +15,7 @@ services:
       - db
     networks:
       - backend
+      - routing
     restart: always
     tty: true
     env_file:
@@ -59,3 +60,5 @@ volumes:
 
 networks:
   backend:
+  routing:
+    external: true

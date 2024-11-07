@@ -8,7 +8,7 @@ from django.core.exceptions import FieldError, BadRequest
 
 from src.services.api_response import send_json_response as api_response
 from src.decorators.request_method_validator import required_method
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 
 from .models import Member
 from .forms import MemberForm
@@ -26,6 +26,12 @@ def list(request) -> JsonResponse:
 @required_method('GET')
 def show(request, member_id) -> JsonResponse:
     member = Member.objects.get(pk=member_id)
+
+    return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(member))
+
+@required_method('GET')
+def find(request) -> JsonResponse:
+    member = Member.objects.filter(username__icontains=request.GET.get('username', None).lower()).first()
 
     return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(member))
 

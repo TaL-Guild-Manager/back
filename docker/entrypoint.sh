@@ -12,6 +12,7 @@ then
 fi
 
 echo "[1/4] >>> Running migrations..."
+python manage.py makemigrations
 python manage.py migrate
 echo "[1/4] <<< Migration done"
 

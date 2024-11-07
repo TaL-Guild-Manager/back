@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.exceptions import FieldError, BadRequest
 
 from src.services.api_response import send_json_response as api_response
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 from src.decorators.request_method_validator import required_method
 
 from .models import Boss
@@ -24,6 +24,12 @@ def list(request) -> JsonResponse:
 @required_method('GET')
 def show(request, boss_id) -> JsonResponse:
     boss = Boss.objects.get(pk=boss_id)
+
+    return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(boss))
+
+@required_method('GET')
+def find(request) -> JsonResponse:
+    boss = Boss.objects.filter(label__icontains=request.GET.get('label', None).lower()).first()
 
     return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(boss))
 

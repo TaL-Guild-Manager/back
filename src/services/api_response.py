@@ -5,7 +5,7 @@ import logging
 import os
 
 from django.http import JsonResponse
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 # from .webhook import Webhook
 
 logger = logging.getLogger(__name__)

@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.exceptions import FieldError, BadRequest
 
 from src.services.api_response import send_json_response as api_response
-from src.contracts.constant import Constants
+from src.contracts.constants import Constants
 from src.decorators.request_method_validator import required_method
 
 from .models import CombatType

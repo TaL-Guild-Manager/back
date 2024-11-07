@@ -43,6 +43,7 @@ def show_serializer(member):
         },
         'added_at': member.added_at.strftime('%Y-%m-%d') if member.added_at else "",
         'removed_at': member.removed_at.strftime('%Y-%m-%d') if member.removed_at else "",
+        'is_pvp': member.is_pvp,
         'is_on_discord': member.is_on_discord,
         'is_active': member.is_active,
         'has_privilege': member.has_privilege,
