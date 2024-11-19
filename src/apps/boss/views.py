@@ -17,7 +17,7 @@ HttpCode = Constants.HttpResponseCodes
 @required_method('GET')
 def list(request) -> JsonResponse:
     filter = request.GET.get('isActivate', True)
-    bosses = Boss.objects.all().values().filter(is_activate=filter)
+    bosses = Boss.objects.filter(is_activate=filter).prefetch_related('loot_set')
 
     return api_response(HttpCode.SUCCESS, 'success', data=list_serializer(bosses))
 

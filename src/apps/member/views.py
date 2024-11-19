@@ -19,7 +19,12 @@ HttpCode = Constants.HttpResponseCodes
 @required_method('GET')
 def list(request) -> JsonResponse:
     filter = request.GET.get('isActivate', True)
-    members = Member.objects.filter(is_activate=filter)
+    bis_filter = request.GET.get('bis', None)
+
+    if bis_filter:
+        members = Member.objects.filter(is_activate=filter, bis__isnull=False if bis_filter.lower() == "true" else True)
+    else:
+        members = Member.objects.filter(is_activate=filter)
 
     return api_response(HttpCode.SUCCESS, 'success', data=list_serializer(members))
 

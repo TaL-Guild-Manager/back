@@ -17,6 +17,7 @@ def list_serializer(members):
                 'id': member.combat_type.id,
                 'label': member.combat_type.label,
             },
+            'best_in_slot': True if member.bis_set.all() else False,
             'added_at': member.added_at,
             'is_activate': member.is_activate
         }
@@ -47,6 +48,7 @@ def show_serializer(member):
         'is_on_discord': member.is_on_discord,
         'is_active': member.is_active,
         'has_privilege': member.has_privilege,
+        'best_in_slot': True if member.bis_set.all() else False,
         'created_at': member.created_at.strftime('%Y-%m-%d') if member.created_at else "",
         'updated_at': member.updated_at.strftime('%Y-%m-%d') if member.updated_at else "",
         'is_activate': member.is_activate,

@@ -8,6 +8,8 @@ def list_serializer(bises):
             stuffs.append({
                 'id': stuff.id,
                 'label': stuff.label,
+                'has_been_acquired': stuff.has_been_acquired if stuff.is_raid_loot else False,
+                'acquired_at': stuff.acquired_at if stuff.has_been_acquired else None,
             })
 
         item = {
@@ -48,12 +50,14 @@ def show_serializer(bis):
                 'id': stuff.loot_type.id,
                 'label': stuff.loot_type.label
             } if stuff.loot_type else None,
+            'has_been_acquired': stuff.has_been_acquired if stuff.is_raid_loot else False,
+            'acquired_at': stuff.acquired_at if stuff.has_been_acquired else None,
             'is_activate': stuff.is_activate
         })
 
     return {
         'id': bis.id,
-        'members': {
+        'member': {
             'id': bis.member.id,
             'username': bis.member.username,
             'weapon': {

@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
-from django.core.exceptions import FieldError, BadRequest
+from django.core.exceptions import FieldError, BadRequest, ObjectDoesNotExist
 
 from src.services.api_response import send_json_response as api_response
 from src.decorators.request_method_validator import required_method
@@ -26,6 +26,15 @@ def show(request, bis_id) -> JsonResponse:
     bis = BiS.objects.get(pk=bis_id)
 
     return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(bis))
+
+def find(request) -> JsonResponse:
+    bis = BiS.objects.filter(member__username__icontains=request.GET.get('username', None).lower()).first()
+
+    if not bis:
+        raise ObjectDoesNotExist("No BiS found with this username")
+
+    return api_response(HttpCode.SUCCESS, 'success', data=show_serializer(bis))
+
 
 @required_method('POST')
 @csrf_protect
